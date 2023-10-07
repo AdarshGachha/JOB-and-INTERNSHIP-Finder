@@ -59,7 +59,7 @@ const navigationMenu2 = [
 
 const Navigation = () => {
   const [navOpen, setNavOpen] = useState(false);
-  const [dimensions, setDimensions] = useState({height: window.innerHeight, width: 0});
+  const [dimensions, setDimensions] = useState({height: 0, width: 0});
 
 
 
@@ -106,7 +106,7 @@ const Navigation = () => {
     return (_) => {
       window.removeEventListener("resize", handleResize);
     };
-  });
+  },[dimensions, navOpen]);
 
   return (
     <>

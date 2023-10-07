@@ -62,7 +62,7 @@ const Navigation = () => {
     return (_) => {
       window.removeEventListener("resize", handleResize);
     };
-  });
+  },[dimensions, navOpen]);
 
   return (
     <>
