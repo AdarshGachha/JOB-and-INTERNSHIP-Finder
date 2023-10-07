@@ -11,9 +11,7 @@ import { Button } from "@material-tailwind/react";
 
 
 
-// export const metadata = {
-//   title: "Student | Homepage",
-// };
+
 const page = () => {
   const router = useRouter();
   const dispatch = useDispatch();

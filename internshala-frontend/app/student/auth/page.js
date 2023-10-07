@@ -45,9 +45,7 @@ function Icon({ id, open }) {
   );
 }
 
-// export const metadata = {
-//   title: "Homepage",
-// };
+
 
 const page = () => {
   const [open, setOpen] = React.useState(0);

@@ -9,9 +9,6 @@ import { asyncapplyinternshipemploye, asyncapplyjobemploye } from "@/store/Actio
 import Link from "next/link";
 import { BiChevronDown, BiChevronUp } from "react-icons/bi";
 
-export const metadata = {
-  title: "Homepage",
-};
 
 const page = () => {
   const dispatch = useDispatch();

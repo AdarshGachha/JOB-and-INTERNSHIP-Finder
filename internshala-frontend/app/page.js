@@ -12,9 +12,7 @@ import RecentBlog from "@/components/RecentBlog";
 import Navigation from "./ui/Navigation";
 import Footer from "./ui/Footer";
 
-// export const metadata = {
-//   title: "Homepage",
-// };
+
 const page = () => {
   return (
     <div className="">
