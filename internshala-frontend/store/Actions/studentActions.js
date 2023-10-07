@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 
 export const asynccurrentstudent = () => async (dispatch, getState) => {
   try {
-    const { data } = await axios.post("/student");
+    const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/student");
     dispatch(addstudent(data.student));
   } catch (error) {
     dispatch(iserror(error.response.data));
@@ -20,7 +20,7 @@ export const asynccurrentstudent = () => async (dispatch, getState) => {
 
 export const asyncsignupstudent = (student) => async (dispatch, getState) => {
   try {
-    const { data } = await axios.post("/student/signup", student);
+    const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/student/signup", student);
     dispatch(asynccurrentstudent());
   } catch (error) {
     dispatch(iserror(error.response.data));
@@ -29,7 +29,7 @@ export const asyncsignupstudent = (student) => async (dispatch, getState) => {
 
 export const asyncsigninstudent = (student) => async (dispatch, getState) => {
   try {
-    const { data } = await axios.post("/student/signin", student);
+    const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/student/signin", student);
     // console.log(data);
     dispatch(asynccurrentstudent());
   } catch (error) {
@@ -39,7 +39,7 @@ export const asyncsigninstudent = (student) => async (dispatch, getState) => {
 
 export const asyncsignoutstudent = (student) => async (dispatch, getState) => {
   try {
-    const { data } = await axios.get("/student/signout");
+    const { data } = await axios.get("https://internshalabackend-0io7.onrender.com/student/signout");
     // console.log(data);
     dispatch(removestudent());
   } catch (error) {
@@ -50,7 +50,7 @@ export const asyncsignoutstudent = (student) => async (dispatch, getState) => {
 export const asyncupdatestudent = (student) => async (dispatch, getState) => {
   try {
     const { _id } = getState().studentReducer.student;
-    const { data } = await axios.post("/student/update/" + _id, student);
+    const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/student/update/" + _id, student);
     // console.log(data);
     dispatch(asynccurrentstudent());
   } catch (error) {
@@ -61,7 +61,7 @@ export const asyncupdatestudent = (student) => async (dispatch, getState) => {
 export const asyncavatarstudent = (avatar) => async (dispatch, getState) => {
   try {
     const { _id } = getState().studentReducer.student;
-    const { data } = await axios.post("/student/avatar/" + _id, avatar);
+    const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/student/avatar/" + _id, avatar);
     // console.log(data);
     dispatch(asynccurrentstudent());
   } catch (error) {
@@ -73,8 +73,7 @@ export const asyncresetpasswordstudent =
   (password) => async (dispatch, getState) => {
     try {
       const { _id } = getState().studentReducer.student;
-      const { data } = await axios.post(
-        "/student/reset-password/" + _id,
+      const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/student/reset-password/" + _id,
         password
       );
       // console.log(data);
@@ -87,7 +86,7 @@ export const asyncresetpasswordstudent =
 export const asyncforgetpasswordstudent =
   (email) => async (dispatch, getState) => {
     try {
-      const { data } = await axios.post("/student/send-mail/", email);
+      const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/student/send-mail/", email);
       dispatch(asynccurrentstudent());
     } catch (error) {
       dispatch(iserror(error.response.data));
@@ -96,7 +95,7 @@ export const asyncforgetpasswordstudent =
 
 export const asyncotppasswordstudent = (pwd) => async (dispatch, getState) => {
   try {
-    const { data } = await axios.post("/student/forget-link/", pwd);
+    const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/student/forget-link/", pwd);
     dispatch(asynccurrentstudent());
   } catch (error) {
     dispatch(iserror(error.response.data));
@@ -106,7 +105,7 @@ export const asyncotppasswordstudent = (pwd) => async (dispatch, getState) => {
 // read all jobs
 export const asyncalljobs = () => async (dispatch, getState) => {
   try {
-    const { data } = await axios.post("/student/alljobs/");
+    const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/student/alljobs/");
     dispatch(addjobs(data.jobs));
   } catch (error) {
     dispatch(iserror(error.response.data));
@@ -117,7 +116,7 @@ export const asyncalljobs = () => async (dispatch, getState) => {
 
 export const asyncallinternships = () => async (dispatch, getState) => {
   try {
-    const { data } = await axios.post("/student/allinternships/");
+    const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/student/allinternships/");
     dispatch(addinternships(data.internships));
   } catch (error) {
     dispatch(iserror(error.response.data));
@@ -126,7 +125,7 @@ export const asyncallinternships = () => async (dispatch, getState) => {
 
 export const asyncapplyjobstudent = (id) => async (dispatch, getState) => {
   try {
-    const { data } = await axios.post("/student/apply/job/" + id);
+    const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/student/apply/job/" + id);
     dispatch(asynccurrentstudent());
     dispatch(asyncalljobs());
   } catch (error) {
@@ -136,7 +135,7 @@ export const asyncapplyjobstudent = (id) => async (dispatch, getState) => {
 export const asyncapplyinternshipstudent =
   (id) => async (dispatch, getState) => {
     try {
-      const { data } = await axios.post("/student/apply/internship/" + id);
+      const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/student/apply/internship/" + id);
       dispatch(asynccurrentstudent());
       dispatch(asyncallinternships());
     } catch (error) {
@@ -146,7 +145,7 @@ export const asyncapplyinternshipstudent =
 
 export const asyncaddeducation = (education) => async (dispatch, getState) => {
   try {
-    const { data } = await axios.post("/resume/add-edu", education);
+    const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/resume/add-edu", education);
     dispatch(asynccurrentstudent());
   } catch (error) {
     dispatch(iserror(error.response.data));
@@ -155,7 +154,7 @@ export const asyncaddeducation = (education) => async (dispatch, getState) => {
 
 export const asyncdeleteeducation = (id) => async (dispatch, getState) => {
   try {
-    const { data } = await axios.post("/resume/delete-edu/" + id);
+    const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/resume/delete-edu/" + id);
     dispatch(asynccurrentstudent());
   } catch (error) {
     dispatch(iserror(error.response.data));
@@ -165,7 +164,7 @@ export const asyncdeleteeducation = (id) => async (dispatch, getState) => {
 export const asyncediteducation =
   (id, education) => async (dispatch, getState) => {
     try {
-      const { data } = await axios.post("/resume/edit-edu/" + id, education);
+      const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/resume/edit-edu/" + id, education);
       dispatch(asynccurrentstudent());
     } catch (error) {
       dispatch(iserror(error.response.data));
@@ -175,7 +174,7 @@ export const asyncediteducation =
 // job resumne
 export const asyncaddjob = (job) => async (dispatch, getState) => {
   try {
-    const { data } = await axios.post("/resume/add-job", job);
+    const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/resume/add-job", job);
     dispatch(asynccurrentstudent());
   } catch (error) {
     dispatch(iserror(error.response.data));
@@ -184,7 +183,7 @@ export const asyncaddjob = (job) => async (dispatch, getState) => {
 
 export const asyncdeletejob = (id) => async (dispatch, getState) => {
   try {
-    const { data } = await axios.post("/resume/delete-job/" + id);
+    const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/resume/delete-job/" + id);
     dispatch(asynccurrentstudent());
   } catch (error) {
     dispatch(iserror(error.response.data));
@@ -194,7 +193,7 @@ export const asyncdeletejob = (id) => async (dispatch, getState) => {
 
 export const asynceditjob =(id, job) => async (dispatch, getState) => {
     try {
-      const { data } = await axios.post("/resume/edit-job/" + id, job);
+      const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/resume/edit-job/" + id, job);
       dispatch(asynccurrentstudent());
     } catch (error) {
       dispatch(iserror(error.response.data));
@@ -204,7 +203,7 @@ export const asynceditjob =(id, job) => async (dispatch, getState) => {
   // internship resumne
 export const asyncaddinternship = (intern) => async (dispatch, getState) => {
   try {
-    const { data } = await axios.post("/resume/add-intern", intern);
+    const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/resume/add-intern", intern);
     dispatch(asynccurrentstudent());
   } catch (error) {
     dispatch(iserror(error.response.data));
@@ -213,7 +212,7 @@ export const asyncaddinternship = (intern) => async (dispatch, getState) => {
 
 export const asyncdeleteinternship = (id) => async (dispatch, getState) => {
   try {
-    const { data } = await axios.post("/resume/delete-intern/" + id);
+    const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/resume/delete-intern/" + id);
     dispatch(asynccurrentstudent());
   } catch (error) {
     dispatch(iserror(error.response.data));
@@ -223,7 +222,7 @@ export const asyncdeleteinternship = (id) => async (dispatch, getState) => {
 
 export const asynceditinternship =(id, intern) => async (dispatch, getState) => {
     try {
-      const { data } = await axios.post("/resume/edit-intern/" + id, intern);
+      const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/resume/edit-intern/" + id, intern);
       dispatch(asynccurrentstudent());
     } catch (error) {
       dispatch(iserror(error.response.data));
@@ -235,7 +234,7 @@ export const asynceditinternship =(id, intern) => async (dispatch, getState) => 
    // responsibility resumne
 export const asyncaddresponsibility = (resp) => async (dispatch, getState) => {
   try {
-    const { data } = await axios.post("/resume/add-resp", resp);
+    const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/resume/add-resp", resp);
     dispatch(asynccurrentstudent());
   } catch (error) {
     dispatch(iserror(error.response.data));
@@ -245,7 +244,7 @@ export const asyncaddresponsibility = (resp) => async (dispatch, getState) => {
 
 export const asyncdeleteresponsibility = (id) => async (dispatch, getState) => {
   try {
-    const { data } = await axios.post("/resume/delete-resp/" + id);
+    const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/resume/delete-resp/" + id);
     dispatch(asynccurrentstudent());
   } catch (error) {
     dispatch(iserror(error.response.data));
@@ -255,7 +254,7 @@ export const asyncdeleteresponsibility = (id) => async (dispatch, getState) => {
 
 export const asynceditresponsibility =(id, resp) => async (dispatch, getState) => {
   try {
-    const { data } = await axios.post("/resume/edit-resp/" + id, resp);
+    const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/resume/edit-resp/" + id, resp);
     dispatch(asynccurrentstudent());
   } catch (error) {
     dispatch(iserror(error.response.data));
@@ -270,7 +269,7 @@ export const asynceditresponsibility =(id, resp) => async (dispatch, getState) =
    // Courses resumne
    export const asyncaddcourses = (cours) => async (dispatch, getState) => {
     try {
-      const { data } = await axios.post("/resume/add-cours", cours);
+      const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/resume/add-cours", cours);
       dispatch(asynccurrentstudent());
     } catch (error) {
       dispatch(iserror(error.response.data));
@@ -280,7 +279,7 @@ export const asynceditresponsibility =(id, resp) => async (dispatch, getState) =
   
   export const asyncdeletecourses = (id) => async (dispatch, getState) => {
     try {
-      const { data } = await axios.post("/resume/delete-cours/" + id);
+      const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/resume/delete-cours/" + id);
       dispatch(asynccurrentstudent());
     } catch (error) {
       dispatch(iserror(error.response.data));
@@ -290,7 +289,7 @@ export const asynceditresponsibility =(id, resp) => async (dispatch, getState) =
   
   export const asynceditcourses =(id, cours) => async (dispatch, getState) => {
     try {
-      const { data } = await axios.post("/resume/edit-cours/" + id, cours);
+      const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/resume/edit-cours/" + id, cours);
       dispatch(asynccurrentstudent());
     } catch (error) {
       dispatch(iserror(error.response.data));
@@ -303,7 +302,7 @@ export const asynceditresponsibility =(id, resp) => async (dispatch, getState) =
    // Projects resumne
    export const asyncaddprojects = (proj) => async (dispatch, getState) => {
     try {
-      const { data } = await axios.post("/resume/add-proj", proj);
+      const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/resume/add-proj", proj);
       dispatch(asynccurrentstudent());
     } catch (error) {
       dispatch(iserror(error.response.data));
@@ -313,7 +312,7 @@ export const asynceditresponsibility =(id, resp) => async (dispatch, getState) =
   
   export const asyncdeleteprojects = (id) => async (dispatch, getState) => {
     try {
-      const { data } = await axios.post("/resume/delete-proj/" + id);
+      const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/resume/delete-proj/" + id);
       dispatch(asynccurrentstudent());
     } catch (error) {
       dispatch(iserror(error.response.data));
@@ -323,7 +322,7 @@ export const asynceditresponsibility =(id, resp) => async (dispatch, getState) =
   
   export const asynceditprojects =(id, proj) => async (dispatch, getState) => {
     try {
-      const { data } = await axios.post("/resume/edit-proj/" + id, proj);
+      const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/resume/edit-proj/" + id, proj);
       dispatch(asynccurrentstudent());
     } catch (error) {
       dispatch(iserror(error.response.data));
@@ -336,7 +335,7 @@ export const asynceditresponsibility =(id, resp) => async (dispatch, getState) =
    // Projects resumne
    export const asyncaddskills = (skil) => async (dispatch, getState) => {
     try {
-      const { data } = await axios.post("/resume/add-skil", skil);
+      const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/resume/add-skil", skil);
       dispatch(asynccurrentstudent());
     } catch (error) {
       dispatch(iserror(error.response.data));
@@ -346,7 +345,7 @@ export const asynceditresponsibility =(id, resp) => async (dispatch, getState) =
   
   export const asyncdeleteskills = (id) => async (dispatch, getState) => {
     try {
-      const { data } = await axios.post("/resume/delete-skil/" + id);
+      const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/resume/delete-skil/" + id);
       dispatch(asynccurrentstudent());
     } catch (error) {
       dispatch(iserror(error.response.data));
@@ -356,7 +355,7 @@ export const asynceditresponsibility =(id, resp) => async (dispatch, getState) =
   
   export const asynceditskills =(id, skil) => async (dispatch, getState) => {
     try {
-      const { data } = await axios.post("/resume/edit-skil/" + id, skil);
+      const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/resume/edit-skil/" + id, skil);
       dispatch(asynccurrentstudent());
     } catch (error) {
       dispatch(iserror(error.response.data));
@@ -371,7 +370,7 @@ export const asynceditresponsibility =(id, resp) => async (dispatch, getState) =
 
 export const asyncstudentdelete = (id) => async (dispatch, getState) => {
   try {
-    const { data } = await axios.post("/student/delete");
+    const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/student/delete");
     // console.log(data);
     dispatch(removestudent());
   } catch (error) {

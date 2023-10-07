@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 
 export const asynccurrentemploye = () => async (dispatch, getState) => {
   try {
-    const { data } = await axios.post("/employe/current");
+    const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/employe/current");
    dispatch(addemploye(data.employe)); 
     
   } catch (error) {
@@ -23,7 +23,7 @@ export const asynccurrentemploye = () => async (dispatch, getState) => {
 
 export const asyncsignupemploye = (employe) => async (dispatch, getState) => {
   try {
-    const { data } = await axios.post("/employe/signup",employe);
+    const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/employe/signup",employe);
     dispatch(asynccurrentemploye());
 
 
@@ -38,7 +38,7 @@ export const asyncsignupemploye = (employe) => async (dispatch, getState) => {
 
 export const asyncsigninemploye = (employe) => async (dispatch, getState) => {
   try {
-    const { data } = await axios.post("/employe/signin",employe);
+    const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/employe/signin",employe);
   // console.log(data);
   dispatch(asynccurrentemploye());
 
@@ -53,7 +53,7 @@ export const asyncsigninemploye = (employe) => async (dispatch, getState) => {
 
 export const asyncsignoutemploye = (employe) => async (dispatch, getState) => {
   try {
-    const { data } = await axios.get("/employe/signout");
+    const { data } = await axios.get("https://internshalabackend-0io7.onrender.com/employe/signout");
   // console.log(data);
   dispatch(removeemploye());
     
@@ -69,7 +69,7 @@ export const asyncupdateemploye = (employe) => async (dispatch, getState) => {
   try {
 
     const {_id} = getState().employeReducer.employe;
-    const { data } = await axios.post("/employe/update/"+_id,employe);
+    const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/employe/update/"+_id,employe);
   // console.log(data);
   dispatch(asynccurrentemploye());
 
@@ -85,7 +85,7 @@ export const asyncavataremploye = (avatar) => async (dispatch, getState) => {
   try {
 
     const {_id} = getState().employeReducer.employe;
-    const { data } = await axios.post("/employe/avatar/"+_id,avatar);
+    const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/employe/avatar/"+_id,avatar);
   // console.log(data);
   dispatch(asynccurrentemploye());
 
@@ -102,7 +102,7 @@ export const asyncresetpasswordemploye = (password) => async (dispatch, getState
   try {
 
     const {_id} = getState().employeReducer.employe;
-    const { data } = await axios.post("/employe/reset-password/"+_id,password);
+    const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/employe/reset-password/"+_id,password);
   // console.log(data);
   dispatch(asynccurrentemploye());
 
@@ -119,7 +119,7 @@ export const asyncresetpasswordemploye = (password) => async (dispatch, getState
 export const asyncforgetpasswordemploye = (email) => async (dispatch, getState) => {
   try {
 
-    const { data } = await axios.post("/employe/send-mail/",email);
+    const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/employe/send-mail/",email);
   dispatch(asynccurrentemploye());
 
 
@@ -134,7 +134,7 @@ export const asyncforgetpasswordemploye = (email) => async (dispatch, getState) 
 export const asyncotppasswordemploye = (pwd) => async (dispatch, getState) => {
   try {
 
-    const { data } = await axios.post("/employe/forget-link/",pwd);
+    const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/employe/forget-link/",pwd);
   dispatch(asynccurrentemploye());
 
 
@@ -151,7 +151,7 @@ export const asyncotppasswordemploye = (pwd) => async (dispatch, getState) => {
 export const asynccreatejobemploye = (job) => async (dispatch, getState) => {
   try {
 
-    const { data } = await axios.post("/employe/job/create/",job);
+    const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/employe/job/create/",job);
   dispatch(asynccurrentemploye());
 
 
@@ -167,7 +167,7 @@ export const asynccreatejobemploye = (job) => async (dispatch, getState) => {
 export const asynccreateinternshipemploye = (internship) => async (dispatch, getState) => {
   try {
 
-    const { data } = await axios.post("/employe/internship/create/",internship);
+    const { data } = await axios.post("https://internshalabackend-0io7.onrender.com/employe/internship/create/",internship);
   dispatch(asynccurrentemploye());
 
 
